@@ -1,12 +1,3 @@
-# shap_streamlit
+This project extends the explainability workflow to CNN-based models by building a SHAP pipeline over the model’s internal FFT representation. Because the CNN computes FFT features inside the network, the explanation flow first extracts that intermediate tensor, applies SHAP GradientExplainer, and then maps the resulting attributions back into domain-readable labels such as link, tap, FFT bin, and frequency in Hz. This makes it possible to interpret CNN predictions in signal space instead of only at the final output layer.
 
-This directory contains the Streamlit app used to explore SHAP explanations for trained models.
-
-## Contents
-- `main.py` : App entry point and page routing.
-- `models/` : Model artifacts, config files, and test datasets used by the dashboard.
-- `src/` : Reusable loading, comparison, filtering, and visualization utilities.
-- `requirements.txt` : Python dependencies for the Streamlit app.
-
-## Purpose
-The app standardizes model loading, reconstructs features from the saved processing pipeline, and supports side-by-side comparison of model predictions and SHAP outputs.
+The CNN XAI toolkit includes multiple complementary views for analysis: global summary plots, FFT range-doppler maps, feature dependence plots, and instance-level waterfall and decision plots. It also supports scoped analysis over all samples, misclassified samples, false positives, false negatives, and subclass-specific misclassifications. Together, these views provide a practical way to compare CNN behavior against XGBoost and support debugging, trust, and model-family standardization across explainable AI workflows.
